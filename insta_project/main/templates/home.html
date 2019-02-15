@@ -1,22 +1,25 @@
 {% extends 'base.html' %}
+
 {% block content %}
 
 {% for post in post.all %}
     <div class="card">
-        <img src="{{post.image.url}}" >
-        {{post.image}}
-        <br><br>
-        {{post.pub_date}}
+        <img src="{{post.image.url}}" style="width:320px;">
+        
+        
         <br><br>
         {{post.body}}
+        <br><br>
+        {{post.pub_date}}
     </div>
     <br>
 {% endfor %}
 <!-- 템플릿태그 for all post로 반복해서 돌리면 될 것 같다. -->
-<h1>instagram</h1>
+
+<!-- <h1>instagram</h1>
 <p>image</p>
 <p>description</p>
-<p>comments</p>
+<p>comments</p> -->
 
 
 

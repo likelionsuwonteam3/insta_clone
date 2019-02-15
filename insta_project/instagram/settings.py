@@ -124,9 +124,8 @@ STATIC_URL = '/static/'
 
 #static 설정
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'portfolio', 'static')
+    os.path.join(BASE_DIR, 'main', 'static')
 ]
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 #media 설정
