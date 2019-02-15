@@ -3,16 +3,24 @@
 {% block content %}
 
 {% for post in post.all %}
-    <div class="card">
-        <img src="{{post.image.url}}" style="width:320px;">
-        
-        
+<div class="card">
+
+    <img src="{{post.image.url}}" style="width:360px;">
+
+    <div class="container">
+
+        <span>좋아요 : 123개</span>
+
         <br><br>
-        {{post.body}}
-        <br><br>
-        {{post.pub_date}}
+        <p>{{post.body}}</p>
+
+        <p>
+            {{post.pub_date}}
+        </p>
     </div>
-    <br>
+
+</div>
+<br>
 {% endfor %}
 <!-- 템플릿태그 for all post로 반복해서 돌리면 될 것 같다. -->
 
@@ -24,4 +32,3 @@
 
 
 {% endblock %}
-
