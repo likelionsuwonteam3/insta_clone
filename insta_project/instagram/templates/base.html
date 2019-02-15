@@ -13,30 +13,23 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg ">
-        
-            <a class="navbar-brand" href="">
-                <img src="{% static 'instagram_logo.png' %}" alt="" style="width:160px; height:36px;">
-            </a>
-            
-                <a class="" href="">
-                    <img src="{% static 'explore.png' %}" alt="" style="width:24px; height:24px;">
-                </a>
-                <a class="" href="">
-                    <img src="{% static 'heart.png' %}" alt="" style="width:24px; height:24px;">
-                </a>
-                <a href="">
-                    <img src="{% static 'mine.png' %}" alt="" style="width:24px; height:24px;">
-                </a>
-            
-        
+    <nav class="navbar fixed-top">
+        <a class="navbar-brand" href="">
+            <img src="{% static 'instagram_logo.png' %}" alt="" style="width:160px; height:36px;">
+        </a>
+        <a class="" href="">
+            <img src="{% static 'explore.png' %}" alt="" style="width:24px; height:24px;">
+        </a>
+        <a class="" href="">
+            <img src="{% static 'heart.png' %}" alt="" style="width:24px; height:24px;">
+        </a>
+        <a href="">
+            <img src="{% static 'mine.png' %}" alt="" style="width:24px; height:24px;">
+        </a>
     </nav>
-
-
 
     {% block content %}
     {% endblock%}
-
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"
         integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp"
@@ -55,19 +48,15 @@
 <style>
     body {
         background-color: #efefef;
+        padding-top:70px;
     }
 
     .navbar {
-        position: fixed;
-        top: 0px;
+        
         z-index: 999;
         background-color: white;
         width: 100%;
     }
 
 
-    nav div a {
-        display: inline;
-    }
-    
 </style>
