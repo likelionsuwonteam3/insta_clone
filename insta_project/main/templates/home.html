@@ -3,6 +3,7 @@
 {% block content %}
 
 {% for post in post.all.reverse %}
+
 <div class="card">
 
     <img src="{{post.image.url}}" style="width:360px;">
@@ -21,14 +22,14 @@
 
 </div>
 <br>
-{% endfor %}
-<!-- 템플릿태그 for all post로 반복해서 돌리면 될 것 같다. -->
-
-<!-- <h1>instagram</h1>
-<p>image</p>
-<p>description</p>
-<p>comments</p> -->
-
-
+{% endfor%}
 
 {% endblock %}
+
+<style>
+body {
+        background-color: #efefef;
+        padding-top:70px;
+    }
+
+</style>
