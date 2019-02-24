@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 {% block content %}
 
 {% if error %}
@@ -8,21 +8,21 @@
 <br>
 {% endif %}
 
-<h1>Login</h1>
+<div class="container" style="text-align: center">
+    <img src="{%static 'instagram_logo.png'%}" alt="">
+    <form method="POST" action="{% url 'login'%}">
 
-<form method="POST" action="{% url 'login'%}">
+        {% csrf_token %}
 
-    {% csrf_token %}
-    Username:
-    <br>
-    <input name="username" type="text" value="">
-    <br>
-    Password:
-    <br>
-    <input name="password" type="password" value="">
-    <br>
-    <br>
-    <input class="btn btn-primary" type="submit" value="Login">
-</form>
+        <br>
+        <input name="username" type="text" placeholder="id를 입력하세요">
+        <br>
 
+        <br>
+        <input name="password" type="password" value="" placeholder="비밀번호를 입력하세요">
+        <br>
+        <br>
+        <input class="btn btn-primary" type="submit" value="Login">
+    </form>
+</div>
 {% endblock %}

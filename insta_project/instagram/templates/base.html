@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    {% if user.is_authenticated %}
     <nav class="navbar fixed-top">
         <a class="navbar-brand" href="">
             <img src="{% static 'instagram_logo.png' %}" alt="" style="width:160px; height:36px;">
@@ -20,21 +21,19 @@
         <a class="" href="">
             <img src="{% static 'explore.png' %}" alt="" style="width:24px; height:24px;">
         </a>
-        {% if user.is_authenticated %}
+
         <a class="" href="">
             <img src="{% static 'heart.png' %}" alt="" style="width:24px; height:24px;">
         </a>
-        <a href="">
+
+
+        <a href="{%url 'logout'%}">
             <img src="{% static 'mine.png' %}" alt="" style="width:24px; height:24px;">
         </a>
-        <a class="" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
-        <form id="logout" method="POST" action="{% url 'logout' %}">
-            {% csrf_token %} <input type="hidden" />
-        </form>
-        {% else %}
-            <a href="{% url 'login'%}">log in</a>
-        {% endif %}
+
     </nav>
+    {% endif %}
+
 
     {% block content %}
     {% endblock%}
@@ -54,17 +53,13 @@
 </html>
 
 <style>
-    body {
-        background-color: #efefef;
-        padding-top:70px;
-    }
-
     .navbar {
-        
         z-index: 999;
         background-color: white;
         width: 100%;
     }
 
-
+    body {
+        padding-top: 70px;
+    }
 </style>

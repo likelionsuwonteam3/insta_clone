@@ -1,24 +1,27 @@
-{% extends 'base.html' %}
 
+{% extends 'base.html' %}
+{% load staticfiles %}
 {% block content %}
 
-<h1>Sign Up!</h1>
+<div class="container" style="text-align: center">
+<img src="{% static 'instagram.png' %}" alt="">
 <form method="POST" action="{% url 'signup'%}">
 {% csrf_token %}
-Username:
-<br>
-<input name="username"  type="text" value="">
-<br>
-Password:
-<br>
-<input name="password1"  type="password" value="">
-<br>
-Confirm Password:
-<br>
-<input name="password2"  type="password" value="">
-<br>
-<br>
-<input class="btn btn-primary" type="submit" value="Sign Up!">
-</form>
 
+<br>
+<input name="username"  type="text" value="" placeholder="id를 입력하세요">
+<br>
+
+<br>
+<input name="password1"  type="password" value="" placeholder="비밀번호를 입력하세요">
+<br>
+
+<br>
+<input name="password2"  type="password" value="" placeholder="바밀번호를 동일하게 입력하세요">
+<br>
+<br>
+<input class="btn btn-primary" type="submit" value="가입하기">
+</form>
+</div>
 {% endblock %}
+
