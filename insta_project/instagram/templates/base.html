@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <div id="ban-monitor" class="backdrop">모바일 화면에서 접속해주세요!</div>
     {% if user.is_authenticated %}
     <nav class="navbar fixed-top">
         <a class="navbar-brand" href="">
@@ -37,7 +38,6 @@
 
     {% block content %}
     {% endblock%}
-
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"
         integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp"
         crossorigin="anonymous"></script>
@@ -47,6 +47,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
+    <script>
+        (function update_screen_size() {
+            document.getElementById("ban-monitor").style.width = window.innerWidth + "px";
+            document.getElementById("ban-monitor").style.height =
+                window.innerHeight + "px";
+            if (window.innerWidth < 576) {
+                document.getElementById("ban-monitor").style.display = "none";
+            }
+        })();
+    </script>
 
 </body>
 
@@ -60,6 +70,13 @@
         border-bottom: 1px solid #efefef;
     }
 
+    .backdrop {
+        position: absolute;
+        background-color: #868e96;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     body {
         padding-top: 62px;
     }
