@@ -26,6 +26,7 @@ SECRET_KEY = '@3fu%t_@yu@+3ow_98swp5eu+amu^jds6kw+nwv*#bgt^&9ov1'
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '127.0.0.1',
     "insta-project.ap-northeast-2.elasticbeanstalk.com",
 ]
 
@@ -81,7 +82,7 @@ WSGI_APPLICATION = 'instagram.wsgi.application'
 if 'RDS_HOSTNAME' in os.environ:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
+            'ENGINE': 'django.db.backends.postgres',
             'NAME': os.environ['RDS_DB_NAME'],
             'USER': os.environ['RDS_USERNAME'],
             'PASSWORD': os.environ['RDS_PASSWORD'],
