@@ -25,7 +25,9 @@ SECRET_KEY = '@3fu%t_@yu@+3ow_98swp5eu+amu^jds6kw+nwv*#bgt^&9ov1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "insta-project.ap-northeast-2.elasticbeanstalk.com",
+]
 
 
 # Application definition
