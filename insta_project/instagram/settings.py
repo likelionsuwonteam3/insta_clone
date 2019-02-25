@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
-    "http://lionsta.ap-northeast-2.elasticbeanstalk.com/"
+    "lionsta.ap-northeast-2.elasticbeanstalk.com/"
 ]
 
 
