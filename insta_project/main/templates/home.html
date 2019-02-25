@@ -4,32 +4,107 @@
 
 {% for post in post.all.reverse %}
 
-<div class="card">
+<div class="card instaCard">
+    <div class="instaCard-head">
+        <div class="instaCard-head_first">
+            <img class="instaCard-head_profile" src="/static/whoami.jpg" />
+            <div class="instaCard-head_author">author</div>
+        </div>
+        <div class="instaCard-head_last">...</div>
+    </div>
 
-    <img src="{{post.image.url}}" style="width:360px;">
+    <img src="{{post.image.url}}" style="width: 100%">
 
-    <div class="container">
-
-        <span>좋아요 : 123개</span>
-
-        <br><br>
-        <p>{{post.body}}</p>
-
-        <p>
-            {{post.pub_date}}
-        </p>
+    <div class="instaCard-body">
+        <div class="instaCard-iconzone">
+            <div class="instaCard-iconzone_first">
+                <div class="instaCard-iconzone_heartzone mr-2">
+                    <img class="heart-icon icons" id="heart" src="static/icon/void-heart.png"/>
+                </div>
+                <div class="instaCard-iconzone_chatzone mr-2">
+                    <img class="chat-icon icons" id="chat" src="static/icon/chat.png"/>
+                </div>
+                <div class="instaCard-iconzone_uploadzone">
+                   <img class="upload-icon icons" id="upload" src="static/icon/upload.png"/>
+                </div>
+            </div>
+            <div class="instaCard-iconzone_last">
+                <div class="instaCard-iconzone_bookmarkzone">
+                    <img class="bookmark-icon icons" id="bookmark" src="static/icon/void-bookmark.png"/>
+                </div>
+            </div>
+        </div>
+        <span>좋아요 123개</span>
+        <br>
+        <div>author {{post.body}}</div>
+        <div>{{post.pub_date}}</div>
     </div>
 
 </div>
-<br>
 {% endfor%}
 
-{% endblock %}
-
 <style>
-body {
+    body {
         background-color: #efefef;
-        padding-top:70px;
+        padding-top:62px;
+    }
+
+    .instaCard {
+        font-size: 14px;
+    }
+
+    .instaCard-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        height: 50px;
+    }
+
+        .instaCard-head_first {
+            display: flex;
+        }
+
+        .instaCard-head_profile {
+            width: 30px;
+            height: 30px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .instaCard-head_author {
+            position: relative;
+            top: 3px;
+        }
+
+        .instaCard-head_last {
+            position: relative;
+            top: -5px;
+            cursor: pointer;
+        }
+
+    .instaCard-body {
+        padding: 5px 20px 20px 20px;
+    }
+    
+    .instaCard-iconzone {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 50px;
+    }
+
+        .instaCard-iconzone_first {
+            display: flex;
+        }
+
+    .icons {
+        width: 25px;
+        height: 25px;
     }
 
 </style>
+
+{% endblock %}
