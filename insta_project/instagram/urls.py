@@ -17,5 +17,6 @@ urlpatterns = [
     path('new/', main.views.new, name='new'),
     path('create/', main.views.create, name='create'),
     path('like/<int:post_id>', main.views.like, name='like'),
+    path('comment/<int:post_id>', main.views.comment, name='comment'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #media 설정

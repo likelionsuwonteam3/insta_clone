@@ -24,9 +24,9 @@
                     </button>
                 </form>
                 <div class="instaCard-iconzone_chatzone mr-2">
-                    <img class="chat-icon icons" id="chat" src="static/icon/chat.png"/>
+                    <img class="chat-icon icons" data-id="chat{{post.id}}" src="static/icon/chat.png"/>
                 </div>
-                <div class="instaCard-iconzone_uploadzone">
+                <div class="instaCard-iconzone_uploadzone" onclick="onClickChat(e);">
                    <img class="upload-icon icons" id="upload" src="static/icon/upload.png"/>
                 </div>
             </div>
@@ -41,7 +41,13 @@
         <div>{{post.author}} {{post.body}}</div>
         <div>{{post.pub_date}}</div>
     </div>
-
+    <form class="input-group mb-3" id="chat{{post.id}}" style="display:none;" action="{% url 'comment' post.id %}" method="POST">
+        {% csrf_token %}
+        <input type="text" class="form-control inputOnlyBottom" name="inputComment" placeholder="덧글을 남겨주세요!" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">확인</button>
+        </div>
+    </form>
 </div>
 {% endfor%}
 
@@ -113,6 +119,24 @@
         top: -3px;
     }
 
+    .inputOnlyBottom {
+        border-top: 1px solid #fff;
+        border-left: 1px solid #fff;
+        border-right: 1px solid #fff;
+    }
+
 </style>
+
+<script>
+    (Array.from(document.querySelectorAll('.chat-icon'))
+        .map(item => (
+            item.onclick = e => {
+                let displayOption = document.getElementById(e.target.dataset.id).style.display;
+                if(displayOption == "none")document.getElementById(e.target.dataset.id).style.display = "flex";
+                else document.getElementById(e.target.dataset.id).style.display = "none";
+            })
+        )
+    )()
+</script>
 
 {% endblock %}
