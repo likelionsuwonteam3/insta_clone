@@ -24,7 +24,7 @@ def home(request):
         return render(request, 'no.html')    
 
 def new(request):
-
+    
     form = BlogPost()
     return render(request, 'new.html', {'form' : form})
 
@@ -40,6 +40,10 @@ def like(request, post_id):
     likedPost = get_object_or_404(Post, pk=post_id)
     newLike.likedpost = likedPost
     likedPost.like += 1
+<<<<<<< HEAD
+
+=======
+>>>>>>> bec711b35a9b2c377ebbc499ec00e389a5c28f63
     likedPost.save()
     newLike.save()
     return redirect('home')

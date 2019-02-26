@@ -54,7 +54,7 @@
             {% endif %}
         {% endfor %}
         <div>{{post.pub_date}}</div>
-        <div>{{post.likedpost}}</div>
+        
     </div>
     <form class="input-group mb-3" id="chat{{post.id}}" style="display:none;" action="{% url 'comment' post.id %}" method="POST">
         {% csrf_token %}
