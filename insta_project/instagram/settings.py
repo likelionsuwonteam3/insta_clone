@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS =  ['*']
 
+AWS_S3_HOST = 's3.ap-northeast-2.amazonaws.com'
+AWS_QUERYSTRING_AUTH = False
+
 
 # Application definition
 
