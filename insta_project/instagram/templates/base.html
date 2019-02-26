@@ -10,6 +10,7 @@
     <title>instagram clone</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css"
         integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'basiccss.css' %}">
 </head>
 
 <body>
@@ -47,37 +48,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script>
-        (function update_screen_size() {
-            document.getElementById("ban-monitor").style.width = window.innerWidth + "px";
-            document.getElementById("ban-monitor").style.height =
-                window.innerHeight + "px";
-            if (window.innerWidth < 576) {
-                document.getElementById("ban-monitor").style.display = "none";
-            }
-        })();
-    </script>
-
+    <script src="{% static 'basicjs.js' %}"></script>
 </body>
 
 </html>
-
-<style>
-    .navbar {
-        z-index: 999;
-        background-color: white;
-        width: 100%;
-        border-bottom: 1px solid #efefef;
-    }
-
-    .backdrop {
-        position: absolute;
-        background-color: #868e96;
-        top: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    body {
-        padding-top: 62px;
-    }
-</style>
