@@ -18,9 +18,11 @@
     <div class="instaCard-body">
         <div class="instaCard-iconzone">
             <div class="instaCard-iconzone_first">
-                <div class="instaCard-iconzone_heartzone mr-2">
-                    <img class="heart-icon icons" id="heart" src="static/icon/void-heart.png"/>
-                </div>
+                <form action="{% url 'like' post.id %}" class="instaCard-iconzone_heartzone mr-2">
+                    <button type="submit" class="btn nopadding">
+                        <img class="heart-icon icons" id="heart" src="static/icon/void-heart.png"/>
+                    </button>
+                </form>
                 <div class="instaCard-iconzone_chatzone mr-2">
                     <img class="chat-icon icons" id="chat" src="static/icon/chat.png"/>
                 </div>
@@ -103,6 +105,12 @@
     .icons {
         width: 25px;
         height: 25px;
+    }
+
+    .nopadding {
+        padding: 0px;
+        position: relative;
+        top: -3px;
     }
 
 </style>

@@ -16,5 +16,6 @@ urlpatterns = [
     path('logout/', accounts.views.logout, name='logout'),
     path('new/', main.views.new, name='new'),
     path('create/', main.views.create, name='create'),
+    path('like/<int:post_id>', main.views.like, name='like'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #media 설정

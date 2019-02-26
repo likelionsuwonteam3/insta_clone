@@ -18,6 +18,12 @@ def new(request):
     form = BlogPost()
     return render(request, 'new.html', {'form' : form})
 
+def like(request, post_id):
+    likedPost = get_object_or_404(Post, pk=post_id)
+    likedPost.like += 1
+    likedPost.save()
+    return redirect('home')
+
 
 def create(request):
     if request.method=="POST":
