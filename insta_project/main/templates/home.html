@@ -18,26 +18,20 @@
     <div class="instaCard-body">
         <div class="instaCard-iconzone">
             <div class="instaCard-iconzone_first">
-                {% for postLike in postLike.all %}
-                    {% if postLike.likedpost == post.id %}
-                        <div class="instaCard-iconzone_heartzone mr-2">
-                            <button type="submit" class="btn nopadding">
-                                <img class="heart-icon icons" id="heart" src="static/icon/heart.png" />
-                            </button>
-                        </div>
-                    {% else %}
-                        <form action="{% url 'like' post.id %}" class="instaCard-iconzone_heartzone mr-2">
-                            <button type="submit" class="btn nopadding">
-                                <img class="heart-icon icons" id="heart" src="static/icon/void-heart.png" />
-                            </button>
-                        </form>
-                    {% endif %}
-                {% endfor %}
-                <form action="{% url 'like' post.id %}" class="instaCard-iconzone_heartzone mr-2">
-                    <button type="submit" class="btn nopadding">
-                        <img class="heart-icon icons" id="heart" src="static/icon/void-heart.png" />
-                    </button>
-                </form>
+                {% if post.userlike == True %}
+                    <div class="instaCard-iconzone_heartzone mr-2">
+                        <button class="btn nopadding">
+                            <img class="heart-icon icons" id="heart" src="static/icon/heart.png" />
+                        </button>
+                    </div>
+                {% else %}
+                    <form action="{% url 'like' post.id %}" class="instaCard-iconzone_heartzone mr-2">
+                        <button type="submit" class="btn nopadding">
+                            <img class="heart-icon icons" id="heart" src="static/icon/void-heart.png" />
+                        </button>
+                    </form>
+                {% endif %}
+                
                 <div class="instaCard-iconzone_chatzone mr-2">
                     <img class="chat-icon icons" data-id="chat{{post.id}}" src="static/icon/chat.png"/>
                 </div>

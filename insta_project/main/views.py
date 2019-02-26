@@ -8,11 +8,18 @@ from django.utils import timezone
 # Create your views here.
 def home(request):
     if request.user.is_authenticated:
-        post = Post.objects
+        posts = Post.objects
         comment = Comment.objects
         postLike = PostLike.objects.filter(postliker=request.user)
-
-        return render(request, 'home.html', {'post': post, 'comment': comment, 'postLike': postLike})
+        for post in posts.all():
+            for like in postLike:
+                print(post)
+                print(like.likedpost)
+                if post == like.likedpost:
+                    post.userlike = True
+        for post in posts.all():
+           print(post.userlike)
+        return render(request, 'home.html', {'post': posts, 'comment': comment})
     else:
         return render(request, 'no.html')    
 
