@@ -8,7 +8,7 @@
     <div class="instaCard-head">
         <div class="instaCard-head_first">
             <img class="instaCard-head_profile" src="/static/whoami.jpg" />
-            <div class="instaCard-head_author">author</div>
+            <div class="instaCard-head_author">{{post.author}}</div>
         </div>
         <div class="instaCard-head_last">...</div>
     </div>
@@ -36,7 +36,7 @@
         </div>
         <span>좋아요 123개</span>
         <br>
-        <div>author {{post.body}}</div>
+        <div>{{post.author}} {{post.body}}</div>
         <div>{{post.pub_date}}</div>
     </div>
 
