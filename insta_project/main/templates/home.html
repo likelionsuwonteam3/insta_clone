@@ -39,6 +39,11 @@
         <span>좋아요 {{post.like}}개</span>
         <br>
         <div>{{post.author}} {{post.body}}</div>
+        {% for comment in comment.all %}
+            {% if comment.post == post %}
+                <div>{{comment.author}} {{comment.comment}}</div>
+            {% endif %}
+        {% endfor %}
         <div>{{post.pub_date}}</div>
         <div>{{post.likedpost}}</div>
     </div>
