@@ -18,15 +18,17 @@ def new(request):
     form = BlogPost()
     return render(request, 'new.html', {'form' : form})
 
-    
+
 def create(request):
     if request.method=="POST":
-        form = BlogPost(request.POST)
+        form = BlogPost(request.POST, request.FILES)
         
         if form.is_valid():
             #모델 객체형태 post이지만 저장은 하지마라!
             post = form.save(commit=False)
-            post.image=request.POST['image']
+            # post.image=request.POST['uploadfrom']
+            post.uploadfrom = request.FILES['uploadfrom']
+
             post.pub_date = timezone.now()
             post.body=request.POST['body']
             
@@ -37,3 +39,4 @@ def create(request):
     else: # get 방식
         form = BlogPost()
         return render(request, 'new.html', {'form' : form})
+
