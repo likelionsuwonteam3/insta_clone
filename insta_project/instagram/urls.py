@@ -14,6 +14,7 @@ urlpatterns = [
     path('signup/', accounts.views.signup, name='signup'),
     path('login/', accounts.views.login, name='login'),
     path('logout/', accounts.views.logout, name='logout'),
-
+    path('new/', main.views.new, name='new'),
+    path('create/', main.views.create, name='create'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #media 설정
