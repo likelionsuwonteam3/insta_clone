@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
-from .models import Post
+from .models import Post, Comment
 from .forms import BlogPost
 from django.utils import timezone
 
@@ -25,6 +25,21 @@ def like(request, post_id):
     likedPost.save()
     return redirect('home')
 
+def comment(request, post_id):
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            comment = Comment()
+            comment.comment = request.POST['inputComment']
+            comment.pup_date = timezone.datetime.now()
+            comment.author = request.user
+            comment.post = Post.objects.get(id=post_id)
+            comment.save()
+            return redirect('home')
+        else:
+            return redirect('login')
+    else:
+        return HttpResponseNotFound("없는 페이지 입니다.")
+    return redirect('home')
 
 def create(request):
     if request.method=="POST":
