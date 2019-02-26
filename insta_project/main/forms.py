@@ -6,4 +6,6 @@ class BlogPost(forms.ModelForm):
         model = Post
         #어떤 항목을 입력받을지
         fields = ['uploadfrom', 'body']
-        
+        widgets = {
+            'body':forms.TextInput(attrs={'class': 'form-control bodytext', }),
+        }

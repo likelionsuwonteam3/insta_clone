@@ -7,9 +7,9 @@ from django.utils import timezone
 
 # Create your views here.
 def home(request):
-    
     if request.user.is_authenticated:
         post = Post.objects
+        
         return render(request, 'home.html', {'post': post})
     else:
         return render(request, 'no.html')    

@@ -1,17 +1,28 @@
 {% extends 'base.html'%}
 {% block content%}
 
-<br><br><br><br><br><br><br><br>
+<br><br><br>
 <div class="container">
     <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <table>
-            {{form.as_table}}
-        </table>
+        <h5>사진을 첨부하세요</h5>
+        {{form.uploadfrom}}
+        <br>
+        <br>
+        <h5>글을 작성하세요</h5>
+        {{form.body}}
         <br>
         <input class="btn btn-dark" type="submit" value="submit">
     </form>
 </div>
 
+<link rel="stylesheet" href="/static/basiccss.css">
+
 {% endblock %}
+
+<style>
+.bodytext{
+    height:200px;
+}
+</style>
