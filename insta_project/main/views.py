@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
-from .models import Post, Comment
+from .models import Post, Comment, PostLike
 from .forms import BlogPost
 from django.utils import timezone
 
@@ -10,7 +10,9 @@ def home(request):
     if request.user.is_authenticated:
         post = Post.objects
         comment = Comment.objects
-        return render(request, 'home.html', {'post': post, 'comment': comment})
+        postLike = PostLike.objects.filter(postliker=request.user)
+
+        return render(request, 'home.html', {'post': post, 'comment': comment, 'postLike': postLike})
     else:
         return render(request, 'no.html')    
 
@@ -20,10 +22,23 @@ def new(request):
     return render(request, 'new.html', {'form' : form})
 
 def like(request, post_id):
+    postLike = PostLike.objects.filter(likedpost=post_id)
+    #라이커에 내가 있으면 그냥 리다이렉트
+    for liker in postLike:
+        if liker.postliker == request.user:
+            return redirect('home')
+    
+    newLike = PostLike()
+    newLike.postliker = request.user
     likedPost = get_object_or_404(Post, pk=post_id)
+    newLike.likedpost = likedPost
     likedPost.like += 1
+<<<<<<< HEAD
 
+=======
+>>>>>>> bec711b35a9b2c377ebbc499ec00e389a5c28f63
     likedPost.save()
+    newLike.save()
     return redirect('home')
 
 def comment(request, post_id):
