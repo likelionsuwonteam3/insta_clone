@@ -9,8 +9,8 @@ from django.utils import timezone
 def home(request):
     if request.user.is_authenticated:
         post = Post.objects
-        
-        return render(request, 'home.html', {'post': post})
+        comment = Comment.objects
+        return render(request, 'home.html', {'post': post, 'comment': comment})
     else:
         return render(request, 'no.html')    
 
