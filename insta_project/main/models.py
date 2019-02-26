@@ -6,7 +6,8 @@ class Post(models.Model):
     uploadfrom = models.ImageField(upload_to='images/')
     pub_date = models.DateTimeField('date published')
     body = models.TextField()
-    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True) 
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    like = models.IntegerField(default = 0)
     
 class Comment(models.Model):
     comment = models.CharField(max_length=200)
