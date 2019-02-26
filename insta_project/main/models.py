@@ -8,7 +8,10 @@ class Post(models.Model):
     body = models.TextField()
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     like = models.IntegerField(default = 0)
-    userlike = models.ManyToManyField(User)
+    
+    
+    # liked posts of the post
+    likedpost = models.ManyToManyField(User,related_name = 'member')
     
 class Comment(models.Model):
     comment = models.CharField(max_length=200)
