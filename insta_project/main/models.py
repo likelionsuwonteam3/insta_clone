@@ -23,9 +23,9 @@ class Comment(models.Model):
         return self.comment
 
 
-# class PostLike():
-#     postliker = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-#     likedpost = models.ForeignKey(Post, on_delete = models.CASCADE, null=True)
+class PostLike(models.Model):
+    postliker = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    likedpost = models.ForeignKey(Post, on_delete = models.CASCADE, null=True)
 
 #  m:n 관계를 설정한다!
 # 좋아요 누른 유저
