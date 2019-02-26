@@ -5,8 +5,5 @@ class BlogPost(forms.ModelForm):
     class Meta:
         model = Post
         #어떤 항목을 입력받을지
-        fields = ['image', 'body']
-        widgets = {
-                    'image' : forms.FileInput(),
-                    'body':forms.TextInput(),
-                }
+        fields = ['uploadfrom', 'body']
+        
