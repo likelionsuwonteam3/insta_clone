@@ -8,7 +8,9 @@ class Post(models.Model):
     body = models.TextField()
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     like = models.IntegerField(default = 0)
-
+    
+    
+    # liked posts of the post
     likedpost = models.ManyToManyField(User,related_name = 'member')
     
 class Comment(models.Model):
