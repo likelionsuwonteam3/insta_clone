@@ -15,22 +15,14 @@ def home(request):
         return render(request, 'no.html')    
 
 def new(request):
-
+    
     form = BlogPost()
     return render(request, 'new.html', {'form' : form})
 
 def like(request, post_id):
     likedPost = get_object_or_404(Post, pk=post_id)
     likedPost.like += 1
-    print("==================")
-    print("request.user.member : ")
-    print(request.user.member)
-    print("==================")
-    likedPost = request.user
-    print("==================")
-    print("likedPost : ")
-    print(likedPost)
-    print("==================")
+
     likedPost.save()
     return redirect('home')
 
