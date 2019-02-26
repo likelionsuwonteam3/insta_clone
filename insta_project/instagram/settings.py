@@ -148,7 +148,14 @@ AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+
+#static 설정
 STATICFILES_DIRS = [
-    STATIC_DIR,
+    os.path.join(BASE_DIR, 'main', 'static')
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+#media 설정
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
