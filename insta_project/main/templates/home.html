@@ -18,31 +18,32 @@
     <div class="instaCard-body">
         <div class="instaCard-iconzone">
             <div class="instaCard-iconzone_first">
-                {% for postLike in postLike.all %}
-                    {% if postLike.likedpost == post.id %}
-                        <div class="instaCard-iconzone_heartzone mr-2">
-                            <button type="submit" class="btn nopadding">
-                                <img class="heart-icon icons" id="heart" src="static/icon/heart.png" />
-                            </button>
-                        </div>
-                    {% else %}
-                        <form action="{% url 'like' post.id %}" class="instaCard-iconzone_heartzone mr-2">
-                            <button type="submit" class="btn nopadding">
-                                <img class="heart-icon icons" id="heart" src="static/icon/void-heart.png" />
-                            </button>
-                        </form>
-                    {% endif %}
-                {% endfor %}
-                <form action="{% url 'like' post.id %}" class="instaCard-iconzone_heartzone mr-2">
-                    <button type="submit" class="btn nopadding">
-                        <img class="heart-icon icons" id="heart" src="static/icon/void-heart.png" />
-                    </button>
-                </form>
+                {% if post.id in id_list %}
+                    <span>123</span>
+                    <div class="instaCard-iconzone_heartzone mr-2">
+                        <button type="submit" class="btn nopadding">
+                            <img class="heart-icon icons" id="heart" src="static/icon/heart.png" />
+                        </button>
+                    </div>
+                {% else %}
+                    {{post.id}}
+                
+                    <span>asd</span>
+                    
+                    <form action="{% url 'like' post.id %}" class="instaCard-iconzone_heartzone mr-2">
+                        <button type="submit" class="btn nopadding">
+                            <img class="heart-icon icons" id="heart" src="static/icon/void-heart.png" />
+                        </button>
+                    </form>
+
+                {% endif %}
+                    
+
                 <div class="instaCard-iconzone_chatzone mr-2">
-                    <img class="chat-icon icons" data-id="chat{{post.id}}" src="static/icon/chat.png"/>
+                    <img class="chat-icon icons" data-id="chat{{post.id}}" src="static/icon/chat.png" />
                 </div>
                 <div class="instaCard-iconzone_uploadzone" onclick="onClickChat(e);">
-                   <img class="upload-icon icons" id="upload" src="static/icon/upload.png"/>
+                    <img class="upload-icon icons" id="upload" src="static/icon/upload.png" />
                 </div>
             </div>
             <div class="instaCard-iconzone_last">
@@ -55,16 +56,18 @@
         <br>
         <div>{{post.author}} {{post.body}}</div>
         {% for comment in comment.all %}
-            {% if comment.post == post %}
-                <div>{{comment.author}} {{comment.comment}}</div>
-            {% endif %}
+        {% if comment.post == post %}
+        <div>{{comment.author}} {{comment.comment}}</div>
+        {% endif %}
         {% endfor %}
         <div>{{post.pub_date}}</div>
-        
+
     </div>
-    <form class="input-group mb-3" id="chat{{post.id}}" style="display:none;" action="{% url 'comment' post.id %}" method="POST">
+    <form class="input-group mb-3" id="chat{{post.id}}" style="display:none;" action="{% url 'comment' post.id %}"
+        method="POST">
         {% csrf_token %}
-        <input type="text" class="form-control inputOnlyBottom" name="inputComment" placeholder="덧글을 남겨주세요!" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <input type="text" class="form-control inputOnlyBottom" name="inputComment" placeholder="덧글을 남겨주세요!"
+            aria-label="Recipient's username" aria-describedby="button-addon2">
         <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="submit" id="button-addon2">확인</button>
         </div>
@@ -145,7 +148,6 @@
         border-left: 1px solid #fff;
         border-right: 1px solid #fff;
     }
-
 </style>
 
 <script>
@@ -153,7 +155,7 @@
         .map(item => (
             item.onclick = e => {
                 let displayOption = document.getElementById(e.target.dataset.id).style.display;
-                if(displayOption == "none")document.getElementById(e.target.dataset.id).style.display = "flex";
+                if (displayOption == "none") document.getElementById(e.target.dataset.id).style.display = "flex";
                 else document.getElementById(e.target.dataset.id).style.display = "none";
             })
         )

@@ -11,8 +11,12 @@ def home(request):
         post = Post.objects
         comment = Comment.objects
         postLike = PostLike.objects.filter(postliker=request.user)
-
-        return render(request, 'home.html', {'post': post, 'comment': comment, 'postLike': postLike})
+        print('=========')
+        print(postLike.values_list('id', flat=True).distinct())
+        print('=========')
+        id_list = postLike.values_list('id', flat=True).distinct()
+        print(id_list)
+        return render(request, 'home.html', {'post': post, 'comment': comment, 'postLike': postLike, 'id_list':id_list})
     else:
         return render(request, 'no.html')    
 
@@ -33,10 +37,6 @@ def like(request, post_id):
     likedPost = get_object_or_404(Post, pk=post_id)
     newLike.likedpost = likedPost
     likedPost.like += 1
-<<<<<<< HEAD
-
-=======
->>>>>>> bec711b35a9b2c377ebbc499ec00e389a5c28f63
     likedPost.save()
     newLike.save()
     return redirect('home')
