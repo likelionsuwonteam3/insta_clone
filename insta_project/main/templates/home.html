@@ -18,17 +18,15 @@
     <div class="instaCard-body">
         <div class="instaCard-iconzone">
             <div class="instaCard-iconzone_first">
+                
                 {% if post.id in id_list %}
-                    <span>123</span>
+                    
                     <div class="instaCard-iconzone_heartzone mr-2">
                         <button type="submit" class="btn nopadding">
                             <img class="heart-icon icons" id="heart" src="static/icon/heart.png" />
                         </button>
                     </div>
                 {% else %}
-                    {{post.id}}
-                
-                    <span>asd</span>
                     
                     <form action="{% url 'like' post.id %}" class="instaCard-iconzone_heartzone mr-2">
                         <button type="submit" class="btn nopadding">

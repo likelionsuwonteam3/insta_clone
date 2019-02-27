@@ -5,17 +5,25 @@ from .models import Post, Comment, PostLike
 from .forms import BlogPost
 from django.utils import timezone
 
+
 # Create your views here.
 def home(request):
     if request.user.is_authenticated:
-        posts = Post.objects
+        post = Post.objects
         comment = Comment.objects
         postLike = PostLike.objects.filter(postliker=request.user)
-        print('=========')
-        print(postLike.values_list('id', flat=True).distinct())
-        print('=========')
-        id_list = postLike.values_list('id', flat=True).distinct()
+       
+        
+        id_q = postLike.values_list('likedpost_id', flat=True).distinct()
+       
+        print(id_q)
+       
+        id_list=[]
+        for i in range(0,id_q.count()):
+            id_list.append(id_q[i])
+        
         print(id_list)
+        
         return render(request, 'home.html', {'post': post, 'comment': comment, 'postLike': postLike, 'id_list':id_list})
     else:
         return render(request, 'no.html')    
@@ -70,6 +78,7 @@ def create(request):
             post.body=request.POST['body']
             
             post.save()
+            
             return redirect('home')
         else:
             return render(request,'new.html', {'form' : form} )
